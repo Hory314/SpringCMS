@@ -17,7 +17,7 @@ public class HomePageController
     @RequestMapping(path = "/home", produces = "text/html;charset=UTF-8")
     public String main(Model m)
     {
-        m.addAttribute("articles", articleDao.findAll());
+        m.addAttribute("articles", articleDao.findAll(5));
         return "main";
     }
 }

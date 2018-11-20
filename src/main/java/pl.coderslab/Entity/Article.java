@@ -16,11 +16,11 @@ public class Article
     private String content;
     @Column(columnDefinition = "DATETIME DEFAULT NOW()", nullable = false)
     private String created;
-    @Column(columnDefinition = "DATETIME DEFAULT NOW()", nullable = true)//?
+    @Column(columnDefinition = "DATETIME DEFAULT NULL", nullable = true)
     private String updated;
     @ManyToOne
     private Author author;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER) // not recommended
     private List<Category> categories;
 
     public Article()

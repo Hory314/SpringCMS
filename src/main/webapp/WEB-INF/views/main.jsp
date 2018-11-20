@@ -24,9 +24,11 @@
             <td>${article.updated}</td>
             <td>${article.author.firstName} ${article.author.lastName}</td>
             <td>
-                <%--<c:forEach var="category" items="${article.categories}">--%>
-                    <%--${category.name}--%>
-                <%--</c:forEach>--%>
+                <ul>
+                    <c:forEach var="category" items="${article.categories}">
+                        <li>${category.name}</li>
+                    </c:forEach>
+                </ul>
             </td>
         </tr>
     </c:forEach>

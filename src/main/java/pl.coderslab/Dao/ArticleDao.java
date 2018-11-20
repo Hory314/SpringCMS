@@ -17,29 +17,17 @@ public class ArticleDao extends AbstractDao<Article>
     @PersistenceContext // wstrzyknięcie entityManagera
     private EntityManager entityManager;
 
-    public List<Article> findAll()
+    public List<Article> findAll(Integer limit)
     {
-        Query query = entityManager.createQuery("SELECT a FROM Article a");
+
+//        Query query = entityManager.createQuery("SELECT a FROM Article a ORDER BY a.created DESC");
+        Query query = entityManager.createQuery("SELECT a FROM Article a ORDER BY a.created DESC");
+        if (limit != null) query.setMaxResults(limit);
         return query.getResultList();
     }
 
-//    public void save(Article entity)
-//    {
-//        entityManager.persist(entity);
-//    }
-//
-//    public void update(Article entity)
-//    {
-//        entityManager.merge(entity);
-//    }
-//
-//    public Article findById(Long id)
-//    {
-//        return entityManager.find(Article.class, id);
-//    }
-//
-//    public void delete(Article entity)
-//    {
-//        entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
-//    }
+    public List<Article> findAll()
+    {
+        return findAll(null);
+    }
 }
